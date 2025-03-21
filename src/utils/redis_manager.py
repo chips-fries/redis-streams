@@ -3,6 +3,7 @@ from typing import Optional
 
 from utils.config_loader import ConfigLoader
 from utils.logger import logger
+from utils.config import REDIS_PASSWORD
 
 
 class RedisManager:
@@ -27,6 +28,7 @@ class RedisManager:
                 port=self.redis_port,
                 db=self.db_mapping[mode],
                 decode_responses=self.decode_responses,
+                password=REDIS_PASSWORD,
             )
             for mode in self.allowed_modes
         }

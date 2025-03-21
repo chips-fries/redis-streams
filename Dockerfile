@@ -31,4 +31,4 @@ EXPOSE 10000
 WORKDIR /app/src
 
 # Run Redis and FastAPI (Redis config is in src/config/redis.conf)
-CMD ["sh", "-c", "redis-server config/redis.conf & exec poetry run uvicorn api:app --host 0.0.0.0 --port 10000 --reload"]
+CMD ["sh", "-c", "redis-server src/config/redis.conf --requirepass=$REDIS_PASSWORD & exec poetry run uvicorn api:app --host 0.0.0.0 --port 10000 --reload"]
