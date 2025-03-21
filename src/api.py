@@ -54,8 +54,14 @@ def get_all_status(token: str = Header(None)):
 
 # Publish a message to a specific environment's Redis stream
 @app.post("/publish/{env}")
-def publish_message(env: str, message: str, token: str = Header(None)):
-    verify_token(token)
+def publish_message(
+    env: str,
+    message: str,
+    token: str = Header(None),
+    x_timestamp: str = Header(None),
+    x_signature: str = Header(None),
+):
+    verify_token(token, x_timestamp, x_signature)
     result = redis_manager.send_message(env, message)
     if result:
         return {"status": "success", "message_id": result}
