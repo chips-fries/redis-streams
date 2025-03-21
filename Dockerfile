@@ -9,24 +9,24 @@ ENV PYTHONUNBUFFERED=1 \
 # Set work directory
 WORKDIR /app
 
-# Install required system packages
-RUN apt-get update && apt-get install -y curl build-essential && \
+# Install system packages + Redis
+RUN apt-get update && \
+    apt-get install -y curl build-essential redis && \
     curl -sSL https://install.python-poetry.org | python3 - && \
     apt-get autoremove -y && apt-get clean
 
-# Add Poetry to PATH
+# Add poetry to PATH
 ENV PATH="/root/.local/bin:$PATH"
 
 # Copy project files
 COPY pyproject.toml poetry.lock ./
 COPY src ./src
-COPY config ./config
 
-# Install Python dependencies using Poetry
+# Install dependencies
 RUN poetry install --no-root
 
-# Expose the port used by Uvicorn
+# Expose API port
 EXPOSE 10000
 
-# Start FastAPI using Uvicorn
-CMD ["poetry", "run", "uvicorn", "api:app", "--host", "0.0.0.0", "--port", "10000", "--reload"]
+# Run Redis and FastAPI (Redis config is in src/config/redis.conf)
+CMD sh -c "redis-server src/config/redis.conf & poetry run uvicorn api:app --host 0.0.0.0 --port 10000 --reload"
