@@ -1,0 +1,29 @@
+[project]
+name = "redis-streams"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Bacon Huang Pei-Hsuan",email = "bacon.huang@titansoft.com.sg"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "redis (>=5.2.1,<6.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "pyyaml (>=6.0.2,<7.0.0)",
+    "fastapi (>=0.115.11,<0.116.0)",
+    "types-redis (>=4.6.0.20241004,<5.0.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pyclean = "^3.1.0"
+flake8 = "^7.1.2"
+pre-commit = "^4.2.0"
+commitizen = "^4.4.1"
+types-redis = "^4.6.0.20241004"
+types-pyyaml = "^6.0.12.20241230"

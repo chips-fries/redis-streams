@@ -1,0 +1,20 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml  # Checks the format of YAML files
+    -   id: end-of-file-fixer  # Ensures that each file ends with a newline
+    -   id: trailing-whitespace  # Removes extra spaces at the end of each line
+    -   id: check-merge-conflict  # Checks for unresolved merge conflict markers in files
+    -   id: check-added-large-files  # Prevents the commit of files that are too large (default is 5MB)
+    -   id: check-json  # Checks the format of JSON files
+
+-   repo: https://github.com/PyCQA/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8  # Used for static checking of Python code style issues
+
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+    -   id: black  # Formats Python code to conform to PEP 8 standards

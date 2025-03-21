@@ -1,0 +1,9 @@
+redis:
+  host: "localhost"
+  port: 6379
+  allowed_modes: ${config/system_config.yaml:system.allowed_modes}
+  db_mapping:
+    test: 0
+    uat: 1
+    prod: 2
+  decode_responses: true

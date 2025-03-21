@@ -1,0 +1,2 @@
+system:
+  allowed_modes: ["test", "uat", "prod"]
