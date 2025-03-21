@@ -1,5 +1,5 @@
 # Redis and API configuration
-REDIS_CONF=config/redis.conf
+REDIS_CONF=config/redis.conf --requirepass "$(REDIS_PASSWORD)"
 REDIS_PID=.redis.pid
 
 API_MODULE=api:app
@@ -30,7 +30,7 @@ restart: stop start
 redis-up:
 	@echo "🔌 Starting Redis..."
 	@if ! pgrep -x "redis-server" > /dev/null; then \
-		redis-server $(REDIS_CONF) & \
+		cd src && redis-server $(REDIS_CONF) & \
 		echo $$! > $(REDIS_PID); \
 		echo "✅ Redis started (PID: `cat $(REDIS_PID)`)" ;\
 	else \
@@ -84,6 +84,7 @@ clean:
 	rm -rf .pytest_cache
 	rm -rf .mypy_cache
 	find . -maxdepth 1 -name ".*.pid" -delete
+	find . -maxdepth 1 -name ".*.rdb" -delete
 	@echo "Project cleaned."
 
 lint:
