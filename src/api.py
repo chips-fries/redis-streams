@@ -1,83 +1,67 @@
-from fastapi import FastAPI, Header, HTTPException
-from security import verify_token
-from utils.redis_manager import RedisManager
+from fastapi import FastAPI, Depends, Header, HTTPException, Request
 from fastapi.responses import JSONResponse
-from fastapi.requests import Request
-from fastapi import status
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
+from utils.redis_manager import RedisManager
 from utils.logger import logger
+from security import verify_token
 
 app = FastAPI()
 redis_manager = RedisManager()
 
 
+# === Exception Handlers ===
 @app.exception_handler(Exception)
 async def general_exception_handler(request: Request, exc: Exception):
-    # Log the error or send it to external services like Slack or Sentry
     logger.error(f"❌ Unhandled exception: {exc}")
-    return JSONResponse(
-        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={"detail": "Internal Server Error"},
-    )
+    return JSONResponse(status_code=500, content={"detail": "Internal Server Error"})
 
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        content={"detail": exc.errors()},
-    )
+    return JSONResponse(status_code=422, content={"detail": exc.errors()})
 
 
 @app.exception_handler(StarletteHTTPException)
 async def http_exception_handler(request: Request, exc: StarletteHTTPException):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={"detail": exc.detail},
-    )
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
 
 
-# Get status of a specific Redis environment (e.g., dev, uat, prod)
-@app.get("/status/{env}")
-def get_env_status(env: str, token: str = Header(None)):
-    verify_token(token)
-    return redis_manager.get_streams_info(env)
+# === Header Auth Class ===
+class AuthHeader:
+    def __init__(
+        self,
+        token: str = Header(None),
+        x_timestamp: str = Header(None),
+        x_signature: str = Header(None),
+    ):
+        verify_token(token, x_timestamp, x_signature)
 
 
-# Get status of all Redis environments
+# === Routes ===
 @app.get("/status")
-def get_all_status(token: str = Header(None)):
-    verify_token(token)
+def get_all_status(_: AuthHeader = Depends()):
     return redis_manager.get_streams_info()
 
 
-# Publish a message to a specific environment's Redis stream
+@app.get("/status/{env}")
+def get_env_status(env: str, _: AuthHeader = Depends()):
+    return redis_manager.get_streams_info(env)
+
+
 @app.post("/publish/{env}")
-def publish_message(
-    env: str,
-    message: str,
-    token: str = Header(None),
-    x_timestamp: str = Header(None),
-    x_signature: str = Header(None),
-):
-    verify_token(token, x_timestamp, x_signature)
+def publish_message(env: str, message: str, _: AuthHeader = Depends()):
     result = redis_manager.send_message(env, message)
-    if result:
-        return {"status": "success", "message_id": result}
-    else:
-        raise HTTPException(status_code=400, detail="Publish failed")
+    if not result:
+        raise HTTPException(400, detail="Publish failed")
+    return {"status": "success", "message_id": result}
 
 
-# Clear all messages (new + pending) in a specific environment
-@app.delete("/clear/{env}")
-def clear_env_stream(env: str, token: str = Header(None)):
-    verify_token(token)
-    return redis_manager.clear_streams(env)
-
-
-# Clear all messages in all environments
 @app.delete("/clear")
-def clear_all_streams(token: str = Header(None)):
-    verify_token(token)
+def clear_all(_: AuthHeader = Depends()):
     return redis_manager.clear_streams()
+
+
+@app.delete("/clear/{env}")
+def clear_env(env: str, _: AuthHeader = Depends()):
+    return redis_manager.clear_streams(env)
