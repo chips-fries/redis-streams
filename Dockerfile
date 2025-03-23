@@ -28,7 +28,12 @@ RUN poetry install --no-root
 # Expose API port
 EXPOSE 10000
 
-WORKDIR /app/src
 
 # Run Redis and FastAPI (Redis config is in src/config/redis.conf)
-CMD sh -c 'redis-server config/redis.conf --requirepass "$REDIS_PASSWORD" & poetry run python src/scheduler.py & exec poetry run uvicorn api:app --host 0.0.0.0 --port 10000 --reload'
+# CMD sh -c 'redis-server config/redis.conf --requirepass "$REDIS_PASSWORD" & poetry run python src/scheduler.py & exec poetry run uvicorn api:app --host 0.0.0.0 --port 10000 --reload'
+
+COPY start.sh /app/start.sh
+
+RUN chmod +x /app/start.sh
+
+CMD ["/app/start.sh"]
