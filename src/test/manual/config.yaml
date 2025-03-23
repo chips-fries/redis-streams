@@ -1,0 +1,7 @@
+environments:
+  uat:
+    api_base_url: "https://6809-116-14-204-226.ngrok-free.app"
+  prod:
+    api_base_url: "https://redis-streams-1.onrender.com"
+
+default_env: "uat"

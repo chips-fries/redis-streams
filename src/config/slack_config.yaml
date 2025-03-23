@@ -1,0 +1,6 @@
+slack:
+  channel_mapping:
+    test: "test"
+    uat: "uat"
+    prod: "prod"
+  bot-token: ${env:SLACK_BOT_TOKEN}

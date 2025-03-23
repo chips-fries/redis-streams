@@ -110,3 +110,170 @@ To run all pre-commit checks manually:
 ```bash
 poetry run pre-commit run --all-files
 ```
+
+---
+
+## 🔁 Action Notification Lifecycle
+
+This section explains, step by step, how an action-based Slack message flows through the system — from being published via API to resolution after a user clicks the button.
+
+---
+
+### 🧨 Step 1. Client calls `/publish/slack/{env}`
+
+The client sends a payload like this:
+
+```json
+{
+  "template": "action",
+  "main_text": "📢 Reminder Test",
+  "sub_text": "If you don't click within 10 seconds, you'll get reminded.",
+  "recipient": "<@U08XXXXXXX>",
+  "status": "info"
+}
+```
+
+---
+
+### 🧭 Step 2. FastAPI handles `/publish/slack/{env}`
+
+The backend will:
+
+1. ✅ Validate `token`, `x-timestamp`, and `x-signature`
+2. ✅ Generate a `notification_id` (typically a millisecond timestamp)
+3. ✅ Append the payload to Redis Stream:
+
+```plain
+XADD uat_stream * notification_id=... env=uat payload=...
+```
+
+---
+
+### 🚚 Step 3. Consumer listens to Redis Stream
+
+The `consumer` service reads from the stream using `XREADGROUP`, and does:
+
+1. ✅ Sends the Slack message using `chat.postMessage` with interactive button
+2. ✅ Receives the `thread_ts` from Slack response
+3. ✅ Creates a Redis Hash:
+
+```plain
+HSET notification_meta:{notification_id} {
+  recipient: "<@user>",
+  thread_ts: "1742xxxxx.0000",
+  template: "action",
+  reminder_sent_count: 0,
+  last_reminder_sent_time: 0,
+  status: "pending"
+}
+```
+
+4. ✅ Adds the notification to ZSET for reminder scheduling:
+
+```plain
+ZADD pending_notifications:{env} <remind_at_time> {notification_id}
+```
+
+---
+
+### ⏰ Step 4. Scheduler triggers reminders every N seconds
+
+The scheduler runs in a loop:
+
+1. ✅ Calls `ZRANGEBYSCORE` to find overdue notifications:
+
+```plain
+ZRANGEBYSCORE pending_notifications:{env} 0 <current_time>
+```
+
+2. ✅ For each overdue `notification_id`:
+   - Retrieves metadata from `notification_meta:{id}`
+   - If `status == "pending"` and `time_diff >= timeout`, sends reminder
+
+3. ✅ Sends Slack thread message:
+
+```plain
+chat.postMessage(thread_ts=..., text="⏰ Reminder #2 <@user> please take action!")
+```
+
+4. ✅ Updates metadata:
+
+```plain
+HSET notification_meta:{id} {
+  reminder_sent_count += 1,
+  last_reminder_sent_time = <now>
+}
+```
+
+5. ✅ Reschedules the next reminder in the ZSET:
+
+```plain
+ZADD pending_notifications:{env} <now + timeout> {notification_id}
+```
+
+---
+
+### 👆 Step 5. User clicks the Slack button
+
+When the user clicks the button, Slack sends a POST to `/slack/actions`.
+
+The API:
+
+1. ✅ Parses the payload to get `notification_id`, `env`, and `thread_ts`
+2. ✅ Calls `mark_as_resolved()`:
+   - `ZREM pending_notifications:{env} {notification_id}`
+   - Updates `status = "resolved"` in metadata
+   - Records `resolved_time`
+
+---
+
+### 🧾 Final Result
+
+- The system keeps reminding every N seconds until resolved
+- Reminders are thread replies in Slack
+- Once the user clicks the button, the reminders stop
+
+---
+
+### 🔎 Redis Example
+
+```plain
+ZSET:
+  Key: pending_notifications:uat
+  Value: 1742751234567 → 1742755000 (next remind_at time)
+
+HASH:
+  Key: notification_meta:1742751234567
+  Fields:
+    recipient: <@user>
+    thread_ts: 1742754123.000000
+    status: pending
+    reminder_sent_count: 2
+    last_reminder_sent_time: 1742754920
+```
+
+---
+
+### 📈 Sequence Diagram (Mermaid format)
+
+If your GitHub supports Mermaid, this diagram helps visualize the flow:
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant API
+    participant Redis
+    participant Consumer
+    participant Slack
+    participant Scheduler
+
+    Client->>API: POST /publish/slack
+    API->>Redis: XADD to stream
+    Consumer->>Redis: XREAD + HSET + ZADD
+    Consumer->>Slack: chat.postMessage
+    Scheduler->>Redis: ZRANGEBYSCORE
+    Scheduler->>Slack: Reminder message
+    Scheduler->>Redis: HSET + ZADD
+    Slack->>API: POST /slack/actions
+    API->>Redis: ZREM + HSET status=resolved
+```

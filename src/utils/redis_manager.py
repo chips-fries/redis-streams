@@ -46,7 +46,7 @@ class RedisManager:
             redis_db = self.redis_db_mapping[env]
             try:
                 redis_db.xinfo_stream(stream_name)
-                logger.info(
+                logger.debug(
                     f"ℹ️ Stream `{stream_name}` already exists, skipping creation"
                 )
             except redis.exceptions.ResponseError:
@@ -133,7 +133,7 @@ class RedisManager:
         return streams_info
 
     def _get_db_streams_info(self, redis_db):
-        """Return detailed stream info for a single Redis DB"""
+        """Return detailed stream info for a single Redis DB, including consumer info"""
         db_streams_info = {}
         stream_list = [
             key for key in redis_db.scan_iter() if str(redis_db.type(key)) == "stream"
@@ -144,26 +144,44 @@ class RedisManager:
                 total_messages = redis_db.xlen(stream)
                 consumer_group = f"{stream}_group"
 
-                # Get number of pending (unacknowledged) messages
+                # Get number of pending messages
                 try:
                     pending_info = redis_db.xpending(stream, consumer_group)
                     pending_count = pending_info["pending"] if pending_info else 0
                 except redis.exceptions.ResponseError:
                     pending_count = 0
 
-                # Get first and last entries (optional for debugging)
+                # First & last message
                 last_entry = redis_db.xrevrange(stream, count=1)
                 last_entry_data = last_entry[0] if last_entry else None
 
                 first_entry = redis_db.xrange(stream, count=1)
                 first_entry_data = first_entry[0] if first_entry else None
 
+                # Consumer group details
+                consumers = []
+                try:
+                    consumer_info = redis_db.xinfo_consumers(stream, consumer_group)
+                    for c in consumer_info:
+                        consumers.append(
+                            {
+                                "name": c["name"],
+                                "pending": c["pending"],
+                                "idle": c["idle"],
+                            }
+                        )
+                except redis.exceptions.ResponseError:
+                    # No group or consumers yet
+                    consumers = []
+
                 db_streams_info[stream] = {
                     "total_messages": total_messages,
                     "pending_messages": pending_count,
                     "first_entry": first_entry_data,
                     "last_entry": last_entry_data,
+                    "consumers": consumers,
                 }
+
             except redis.exceptions.ResponseError:
                 logger.warning(f"⚠️ Unable to retrieve info for stream `{stream}`")
 
