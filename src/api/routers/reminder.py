@@ -1,3 +1,4 @@
+import traceback
 from fastapi import APIRouter, Request, Form
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
@@ -90,4 +91,5 @@ async def reminder_action_handler(payload: str = Form(...)):
         return PlainTextResponse("OK")
 
     except Exception as e:
+        traceback.print_exc()
         return PlainTextResponse(f"Error: {e}", status_code=500)

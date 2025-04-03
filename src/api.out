@@ -1,4 +1,11 @@
-INFO:     Will watch for changes in these directories: ['/Users/bacon.huang85/Desktop/TPP/chips-fries/redis-streams/src']
-INFO:     Uvicorn running on http://0.0.0.0:10000 (Press CTRL+C to quit)
-INFO:     Started reloader process [26949] using StatReload
-ERROR:    Error loading ASGI app. Could not import module "api.main".
+10:05:03.055 | DEBUG   | prefect.profiles - Using profile 'uat'
+[2025-04-03 10:05:03,672] [INFO] [root] - Root logger configured. Level: INFO. Uvicorn integration attempted (clear handlers).
+[2025-04-03 10:05:03,674] [INFO] [uvicorn.error] - Started server process [35152]
+[2025-04-03 10:05:03,674] [INFO] [uvicorn.error] - Waiting for application startup.
+[2025-04-03 10:05:03,674] [INFO] [uvicorn.error] - Application startup complete.
+[2025-04-03 10:05:03,674] [INFO] [uvicorn.error] - Uvicorn running on http://0.0.0.0:10000 (Press CTRL+C to quit)
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Desktop/TPP/chips-fries/redis-streams/src/api/routers/reminder.py", line 87, in reminder_action_handler
+    await resolve_reminder(
+TypeError: resolve_reminder() got an unexpected keyword argument 'slack_update'
+[2025-04-03 10:05:20,536] [INFO] [uvicorn.access] - 13.218.100.133:0 - "POST /api/v1/reminder/action HTTP/1.1" 500

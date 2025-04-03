@@ -8,7 +8,7 @@ PREFECT_PID=.prefect.pid
 PREFECT_WORKER_PID=.prefect-worker.pid
 API_PID=.api.pid
 
-API_MODULE=api.main:app
+API_MODULE=app:app
 API_HOST=0.0.0.0
 API_PORT=10000
 UVICORN_CMD=uvicorn $(API_MODULE) --host $(API_HOST) --port $(API_PORT) --reload
@@ -162,12 +162,12 @@ clean:
 	find . -name "*.rdb" -delete
 	find . -name "*.aof" -delete
 	find . -name "*.out" -delete
+	find . -name "*.sqlite*" -delete
 	rm -rf src/prefect/db/db.*
 	pkill -f redis
 	pkill -f prefect
 	pkill -f consumer
 	pkill -f orch
-	rm -rf src/prefect/db/*
 	@echo "🧹 Project cleaned."
 
 # lint:

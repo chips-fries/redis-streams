@@ -24,7 +24,7 @@ deployments:
   tags: []
   concurrency_limit:
   description:
-  entrypoint:
+  entrypoint: 
     orch/flows/scheduled/launch_due_reminder_checks_flow.py:launch_due_reminder_checks_flow
   parameters: {}
   work_pool:

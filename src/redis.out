@@ -1,8 +1,8 @@
-26858:C 03 Apr 2025 08:27:33.244 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-26858:C 03 Apr 2025 08:27:33.245 * Redis version=7.2.7, bits=64, commit=00000000, modified=0, pid=26858, just started
-26858:C 03 Apr 2025 08:27:33.247 * Configuration loaded
-26858:M 03 Apr 2025 08:27:33.249 * monotonic clock: POSIX clock_gettime
-26858:M 03 Apr 2025 08:27:33.252 * Running mode=standalone, port=6379.
-26858:M 03 Apr 2025 08:27:33.254 # WARNING: The TCP backlog setting of 511 cannot be enforced because kern.ipc.somaxconn is set to the lower value of 128.
-26858:M 03 Apr 2025 08:27:33.256 * Server initialized
-26858:M 03 Apr 2025 08:27:33.260 * Ready to accept connections tcp
+33353:C 03 Apr 2025 09:31:43.195 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+33353:C 03 Apr 2025 09:31:43.195 * Redis version=7.2.7, bits=64, commit=00000000, modified=0, pid=33353, just started
+33353:C 03 Apr 2025 09:31:43.198 * Configuration loaded
+33353:M 03 Apr 2025 09:31:43.199 * monotonic clock: POSIX clock_gettime
+33353:M 03 Apr 2025 09:31:43.201 * Running mode=standalone, port=6379.
+33353:M 03 Apr 2025 09:31:43.216 # WARNING: The TCP backlog setting of 511 cannot be enforced because kern.ipc.somaxconn is set to the lower value of 128.
+33353:M 03 Apr 2025 09:31:43.218 * Server initialized
+33353:M 03 Apr 2025 09:31:43.218 * Ready to accept connections tcp
