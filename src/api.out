@@ -1,0 +1,4 @@
+INFO:     Will watch for changes in these directories: ['/Users/bacon.huang85/Desktop/TPP/chips-fries/redis-streams/src']
+INFO:     Uvicorn running on http://0.0.0.0:10000 (Press CTRL+C to quit)
+INFO:     Started reloader process [26949] using StatReload
+ERROR:    Error loading ASGI app. Could not import module "api.main".

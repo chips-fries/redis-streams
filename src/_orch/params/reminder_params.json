@@ -1,0 +1,41 @@
+{
+  "message_context": {
+    "source": "scheduler_reminder_run"
+  },
+  "trigger_source": "cli_manual_refactor",
+  "targets": [
+    {
+      "platform": "slack",
+      "template_name": "SlackReminderTemplate",
+      "context_data": {
+        "destination_alias": "${env:ENV}_channel",
+        "reminder_text": "請及時處理 Slack 上的任務 #{{task_ref}}！\n現在時間：{{TIME}}",
+        "sub_text": "截止日期：{{due_date}}",
+        "mention_aliases": ["bacon"],
+        "interaction_mode": "todo_status_critical",
+        "timestamp_placeholder": "{{TIME}}",
+        "follow_up_policy": {
+          "initial_delay_seconds": 10,
+          "repeat_delay_seconds": 10,
+          "max_attempts": 0,
+          "thread_message_template": "{{reminder_text}} 尚未處理！"
+        }
+      }
+    },
+    {
+      "platform": "line",
+      "template_name": "LineReminderTemplate",
+      "context_data": {
+        "destination_alias": "bacon_dm",
+        "reminder_text": "Line 提醒：記得完成報告 {{report_id}}。\n現在時間：{{TIME}}",
+        "interaction_mode": "acknowledge_only",
+        "timestamp_placeholder": "{{TIME}}",
+        "follow_up_policy": {
+          "initial_delay_seconds": 10,
+          "max_attempts": 1,
+          "thread_message_template": "報告 {{report_id}} 還沒好嗎？"
+        }
+      }
+    }
+  ]
+}

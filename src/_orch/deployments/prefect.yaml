@@ -1,0 +1,93 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: src
+prefect-version: 3.2.14
+
+
+# build section allows you to manage and build docker images
+build:
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push:
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.set_working_directory:
+    directory: /Users/bacon.huang85/Desktop/TPP/chips-fries/redis-streams/src
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+- name: example-reminder
+  version:
+  tags: []
+  concurrency_limit:
+  description: "Builds and triggers tasks to publish initial Reminder instructions
+    based on a list of targets.\nEach task handles message building, publishing, and
+    potentially scheduling follow-ups.\nThis flow waits for all submitted tasks to
+    complete and fails if any task fails.\n\nArgs:\n    targets (List[Dict[str, Any]]):
+    List where each dict contains:\n        - platform (str)\n        - template_name
+    (str)\n        - context_data (Dict): Must include 'destination_alias', 'reminder_text'.\n\
+    \                                 Can include 'mention_aliases', 'interaction_mode',\n\
+    \                                 'follow_up_policy', etc.\n    message_context
+    (Optional[Dict[str, Any]]): Global context for all tasks.\n    trigger_source
+    (str): Identifier for what triggered this flow."
+  entrypoint: orch/flows/reminder_flow.py:send_reminder_flow
+  parameters:
+    message_context:
+      source: scheduler_reminder_run
+    trigger_source: cli_manual_refactor
+    targets:
+    - platform: slack
+      template_name: SlackReminderTemplate
+      context_data:
+        destination_alias: ${env:ENV}_channel
+        reminder_text: "請及時處理 Slack 上的任務 #{{task_ref}}！\n現在時間：{{TIME}}"
+        sub_text: 截止日期：{{due_date}}
+        mention_aliases:
+        - bacon
+        interaction_mode: todo_status_critical
+        timestamp_placeholder: '{{TIME}}'
+        follow_up_policy:
+          initial_delay_seconds: 10
+          repeat_delay_seconds: 10
+          max_attempts: 0
+          thread_message_template: '{{reminder_text}} 尚未處理！'
+    - platform: line
+      template_name: LineReminderTemplate
+      context_data:
+        destination_alias: bacon_dm
+        reminder_text: "Line 提醒：記得完成報告 {{report_id}}。\n現在時間：{{TIME}}"
+        interaction_mode: acknowledge_only
+        timestamp_placeholder: '{{TIME}}'
+        follow_up_policy:
+          initial_delay_seconds: 10
+          max_attempts: 1
+          thread_message_template: 報告 {{report_id}} 還沒好嗎？
+  work_pool:
+    name: default
+    work_queue_name:
+    job_variables: {}
+  schedules:
+  - cron: '*/30 * * * *'
+    timezone: Asia/Taipei
+    day_or: true
+    active: true
+- name: example-reminder-checks
+  version:
+  tags: []
+  concurrency_limit:
+  description:
+  entrypoint: orch/flows/launch_due_reminder_checks_flow.py:launch_due_reminder_checks_flow
+  parameters: {}
+  work_pool:
+    name: default
+    work_queue_name:
+    job_variables: {}
+  schedules:
+  - cron: '*/10 * * * *'
+    timezone: Asia/Taipei
+    day_or: true
+    active: true

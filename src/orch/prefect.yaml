@@ -1,0 +1,54 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: src
+prefect-version: 3.2.14
+
+# build section allows you to manage and build docker images
+build:
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push:
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.set_working_directory:
+    directory: /Users/bacon.huang85/Desktop/TPP/chips-fries/redis-streams/src/
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+- name: launch_due_reminder_checks_flow
+  version:
+  tags: []
+  concurrency_limit:
+  description:
+  entrypoint:
+    orch/flows/scheduled/launch_due_reminder_checks_flow.py:launch_due_reminder_checks_flow
+  parameters: {}
+  work_pool:
+    name: default
+    work_queue_name:
+    job_variables: {}
+  schedules:
+  - cron: '*/10 * * * *'
+    timezone: Asia/Taipei
+    day_or: true
+    active: true
+- name: send_morning_reminder_flow
+  version:
+  tags: []
+  concurrency_limit:
+  description: This flow runs every morning (e.g. 9:00 AM) to send a wake-up reminder.
+  entrypoint: orch/flows/scheduled/send_morning_reminder_flow.py:send_morning_reminder_flow
+  parameters: {}
+  work_pool:
+    name: default
+    work_queue_name:
+    job_variables: {}
+  schedules:
+  - cron: '*/5 * * * *'
+    timezone: Asia/Taipei
+    day_or: true
+    active: true

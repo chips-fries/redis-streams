@@ -1,0 +1,29 @@
+{
+  "targets": [
+    {
+      "platform": "slack",
+      "template_name": "SlackInfoTemplate",
+      "context_data": {
+        "destination_alias": "${env:ENV}_channel",
+        "mention_aliases": ["bacon"],
+        "main_text": "早上好 [Slack]! 這是一條重構後的測試消息。",
+        "sub_text": "測試時間: {{TIME}}"
+      }
+    },
+    {
+      "platform": "line",
+      "template_name": "LineInfoTemplate",
+      "context_data": {
+        "destination_alias": "bacon_dm",
+        "mention_aliases": ["bacon"],
+        "main_text": "早上好 [Line]! 重構測試消息。",
+        "sub_text": "時間: {{TIME}}"
+      }
+    }
+  ],
+  "message_context": {
+    "source": "manual_refactor_run",
+    "test_id": "refactor-001"
+  },
+  "trigger_source": "cli_manual_refactor"
+}

@@ -1,0 +1,1084 @@
+08:27:36.101 | DEBUG   | prefect.profiles - Using profile 'uat'
+
+ ___ ___ ___ ___ ___ ___ _____
+| _ \ _ \ __| __| __/ __|_   _|
+|  _/   / _|| _|| _| (__  | |
+|_| |_|_\___|_| |___\___| |_|
+
+Configure Prefect to communicate with the server with:
+
+    prefect config set PREFECT_API_URL=http://127.0.0.1:4201/api
+
+View the API reference documentation at http://127.0.0.1:4201/docs
+
+Check out the dashboard at http://127.0.0.1:4201
+
+
+
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/server.py", line 153, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 460, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 126, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/utilities/server.py", line 50, in handle_response_scoped_depends
+    response = await default_handler(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/workers.py", line 594, in worker_heartbeat
+    await models.workers.worker_heartbeat(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/models/workers.py", line 768, in worker_heartbeat
+    result = await session.execute(insert_stmt)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 463, in execute
+    result = await greenlet_spawn(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1294, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO worker (work_pool_id, name, last_heartbeat_time, heartbeat_interval_seconds, status, id, created, updated) VALUES (:work_pool_id, :name, :last_heartbeat_time, :heartbeat_interval_seconds, :status, :id, :created, :updated) ON CONFLICT (work_pool_id, name) DO UPDATE SET last_heartbeat_time = :param_1, heartbeat_interval_seconds = :param_2, status = :param_3]
+[parameters: {'work_pool_id': '73ed2ea4-6f56-412f-aeff-25f40f11c18b', 'name': 'ProcessWorker 853e55ce-760a-4c45-884f-563721ceeb78', 'last_heartbeat_time': '2025-04-03 00:28:07.495992', 'heartbeat_interval_seconds': 30, 'status': 'ONLINE', 'id': '4aa76f48-dffe-4c8b-8798-a8b4b32199f4', 'created': '2025-04-03 00:28:07.496337', 'updated': '2025-04-03 00:28:07.496339', 'param_1': '2025-04-03 00:28:07.495992', 'param_2': 30, 'param_3': 'ONLINE'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/server.py", line 153, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 460, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 126, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/utilities/server.py", line 50, in handle_response_scoped_depends
+    response = await default_handler(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/workers.py", line 594, in worker_heartbeat
+    await models.workers.worker_heartbeat(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/models/workers.py", line 768, in worker_heartbeat
+    result = await session.execute(insert_stmt)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 463, in execute
+    result = await greenlet_spawn(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1294, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO worker (work_pool_id, name, last_heartbeat_time, heartbeat_interval_seconds, status, id, created, updated) VALUES (:work_pool_id, :name, :last_heartbeat_time, :heartbeat_interval_seconds, :status, :id, :created, :updated) ON CONFLICT (work_pool_id, name) DO UPDATE SET last_heartbeat_time = :param_1, heartbeat_interval_seconds = :param_2, status = :param_3]
+[parameters: {'work_pool_id': '73ed2ea4-6f56-412f-aeff-25f40f11c18b', 'name': 'ProcessWorker 853e55ce-760a-4c45-884f-563721ceeb78', 'last_heartbeat_time': '2025-04-03 00:28:09.226451', 'heartbeat_interval_seconds': 30, 'status': 'ONLINE', 'id': '423d876c-0c65-47af-a22e-b90e663b35c8', 'created': '2025-04-03 00:28:09.226806', 'updated': '2025-04-03 00:28:09.226815', 'param_1': '2025-04-03 00:28:09.226451', 'param_2': 30, 'param_3': 'ONLINE'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/server.py", line 153, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 460, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 126, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/utilities/server.py", line 50, in handle_response_scoped_depends
+    response = await default_handler(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/flow_runs.py", line 888, in update_flow_run_labels
+    await models.flow_runs.update_flow_run_labels(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/models/flow_runs.py", line 685, in update_flow_run_labels
+    result = await session.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 463, in execute
+    result = await greenlet_spawn(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1648, in orm_execute_statement
+    return super().orm_execute_statement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: UPDATE flow_run SET labels=:labels, updated=strftime('%Y-%m-%d %H:%M:%f000', 'now') WHERE flow_run.id = :id_1]
+[parameters: {'labels': '{"prefect.worker.name": "ProcessWorker 853e55ce-760a-4c45-884f-563721ceeb78", "prefect.worker.type": "process", "prefect.work-pool.name": "default", "prefect.work-pool.id": "73ed2ea4-6f56-412f-aeff-25f40f11c18b"}', 'id_1': '0eb70528-29c3-4388-8bc4-670f58022144'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/server.py", line 153, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 460, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 126, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/utilities/server.py", line 50, in handle_response_scoped_depends
+    response = await default_handler(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/flow_runs.py", line 888, in update_flow_run_labels
+    await models.flow_runs.update_flow_run_labels(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/models/flow_runs.py", line 685, in update_flow_run_labels
+    result = await session.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 463, in execute
+    result = await greenlet_spawn(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1648, in orm_execute_statement
+    return super().orm_execute_statement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: UPDATE flow_run SET labels=:labels, updated=strftime('%Y-%m-%d %H:%M:%f000', 'now') WHERE flow_run.id = :id_1]
+[parameters: {'labels': '{"prefect.worker.name": "ProcessWorker 853e55ce-760a-4c45-884f-563721ceeb78", "prefect.worker.type": "process", "prefect.work-pool.name": "default", "prefect.work-pool.id": "73ed2ea4-6f56-412f-aeff-25f40f11c18b"}', 'id_1': 'e4e5bb69-fe33-4c9e-900a-8994b5189f81'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/server.py", line 153, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 460, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 126, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/utilities/server.py", line 50, in handle_response_scoped_depends
+    response = await default_handler(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/flow_runs.py", line 115, in create_flow_run
+    model = await models.flow_runs.create_flow_run(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/models/flow_runs.py", line 104, in create_flow_run
+    await session.flush()
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 802, in flush
+    await greenlet_spawn(self.sync_session.flush, objects=objects)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO flow_run (flow_id, deployment_id, work_queue_name, flow_version, deployment_version, parameters, idempotency_key, context, empirical_policy, tags, labels, created_by, infrastructure_pid, job_variables, infrastructure_document_id, parent_task_run_id, auto_scheduled, state_id, work_queue_id, name, state_type, state_name, state_timestamp, run_count, expected_start_time, next_scheduled_start_time, start_time, end_time, total_run_time, id, created, updated) VALUES (:flow_id, :deployment_id, :work_queue_name, :flow_version, :deployment_version, :parameters, :idempotency_key, :context, :empirical_policy, :tags, :labels, :created_by, :infrastructure_pid, :job_variables, :infrastructure_document_id, :parent_task_run_id, :auto_scheduled, :state_id, :work_queue_id, :name, :state_type, :state_name, :state_timestamp, :run_count, :expected_start_time, :next_scheduled_start_time, :start_time, :end_time, :total_run_time, :id, :created, :updated)]
+[parameters: {'flow_id': '90c2ebd2-f29f-4b37-829a-ea91b88beb40', 'deployment_id': None, 'work_queue_name': None, 'flow_version': '38a7d5e42de58d28864eb388c3847f74', 'deployment_version': None, 'parameters': '{"targets": [{"platform": "slack", "template_name": "SlackReminderTemplate", "context_data": {"destination_alias": "uat_channel", "mention_aliases":  ... (765 characters truncated) ... u9084\\u6c92\\u597d\\u55ce\\uff1f"}}}], "message_context": {"trigger": "scheduled_morning_reminder"}, "trigger_source": "scheduled_morning_reminder"}', 'idempotency_key': None, 'context': '{}', 'empirical_policy': '{"max_retries": 0, "retry_delay_seconds": 0.0, "retries": 0, "retry_delay": 0, "pause_keys": [], "resuming": false, "retry_type": null}', 'tags': '[]', 'labels': '{"prefect.flow.id": "90c2ebd2-f29f-4b37-829a-ea91b88beb40"}', 'created_by': None, 'infrastructure_pid': None, 'job_variables': '{}', 'infrastructure_document_id': None, 'parent_task_run_id': 'fd646777-593f-4a18-9496-656355383d56', 'auto_scheduled': 0, 'state_id': None, 'work_queue_id': None, 'name': 'diamond-swift', 'state_type': None, 'state_name': None, 'state_timestamp': None, 'run_count': 0, 'expected_start_time': None, 'next_scheduled_start_time': None, 'start_time': None, 'end_time': None, 'total_run_time': '1970-01-01 00:00:00.000000', 'id': '9f6bc772-709b-4204-bbe5-c33a3c6a497d', 'created': '2025-04-03 00:40:04.686028', 'updated': '2025-04-03 00:40:04.687933'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/server.py", line 153, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 460, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 126, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/utilities/server.py", line 50, in handle_response_scoped_depends
+    response = await default_handler(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/flow_runs.py", line 115, in create_flow_run
+    model = await models.flow_runs.create_flow_run(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/models/flow_runs.py", line 104, in create_flow_run
+    await session.flush()
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 802, in flush
+    await greenlet_spawn(self.sync_session.flush, objects=objects)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO flow_run (flow_id, deployment_id, work_queue_name, flow_version, deployment_version, parameters, idempotency_key, context, empirical_policy, tags, labels, created_by, infrastructure_pid, job_variables, infrastructure_document_id, parent_task_run_id, auto_scheduled, state_id, work_queue_id, name, state_type, state_name, state_timestamp, run_count, expected_start_time, next_scheduled_start_time, start_time, end_time, total_run_time, id, created, updated) VALUES (:flow_id, :deployment_id, :work_queue_name, :flow_version, :deployment_version, :parameters, :idempotency_key, :context, :empirical_policy, :tags, :labels, :created_by, :infrastructure_pid, :job_variables, :infrastructure_document_id, :parent_task_run_id, :auto_scheduled, :state_id, :work_queue_id, :name, :state_type, :state_name, :state_timestamp, :run_count, :expected_start_time, :next_scheduled_start_time, :start_time, :end_time, :total_run_time, :id, :created, :updated)]
+[parameters: {'flow_id': '68b6f7ce-e18f-4b5b-83a4-f688eed68358', 'deployment_id': None, 'work_queue_name': None, 'flow_version': 'ed767d09187b28e7c138f7e85e56dacc', 'deployment_version': None, 'parameters': '{"reminder_id": "d1a44283-1c92-44d0-bea4-7ece3da83762"}', 'idempotency_key': None, 'context': '{}', 'empirical_policy': '{"max_retries": 0, "retry_delay_seconds": 0.0, "retries": 0, "retry_delay": 0, "pause_keys": [], "resuming": false, "retry_type": null}', 'tags': '[]', 'labels': '{"prefect.flow.id": "68b6f7ce-e18f-4b5b-83a4-f688eed68358"}', 'created_by': None, 'infrastructure_pid': None, 'job_variables': '{}', 'infrastructure_document_id': None, 'parent_task_run_id': '3e9a6e1c-fd4e-4988-9168-003dfa508895', 'auto_scheduled': 0, 'state_id': None, 'work_queue_id': None, 'name': 'straight-cuscus', 'state_type': None, 'state_name': None, 'state_timestamp': None, 'run_count': 0, 'expected_start_time': None, 'next_scheduled_start_time': None, 'start_time': None, 'end_time': None, 'total_run_time': '1970-01-01 00:00:00.000000', 'id': 'aa1001ec-0318-4651-a4ba-0903b5738eae', 'created': '2025-04-03 00:40:04.882226', 'updated': '2025-04-03 00:40:04.883731'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/server.py", line 153, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 460, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 126, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/utilities/server.py", line 50, in handle_response_scoped_depends
+    response = await default_handler(request)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/api/task_runs.py", line 79, in create_task_run
+    model = await models.task_runs.create_task_run(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/prefect/server/models/task_runs.py", line 93, in create_task_run
+    await session.execute(insert_stmt)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/ext/asyncio/session.py", line 463, in execute
+    result = await greenlet_spawn(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1294, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 172, in execute
+    self._adapt_connection._handle_exception(error)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 323, in _handle_exception
+    raise error
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 154, in execute
+    self.await_(_cursor.execute(operation, parameters))
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 122, in _execute
+    return await future
+  File "/Users/bacon.huang85/Library/Caches/pypoetry/virtualenvs/redis-streams-4dGDX2A3-py3.10/lib/python3.10/site-packages/aiosqlite/core.py", line 105, in run
+    result = function()
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: INSERT INTO task_run (flow_run_id, task_key, dynamic_key, cache_key, cache_expiration, task_version, flow_run_run_count, empirical_policy, task_inputs, tags, labels, name, run_count, total_run_time, id, created, updated) VALUES (:flow_run_id, :task_key, :dynamic_key, :cache_key, :cache_expiration, :task_version, :flow_run_run_count, :empirical_policy, :task_inputs, :tags, :labels, :name, :run_count, :total_run_time, :id, :created, :updated) ON CONFLICT (flow_run_id, task_key, dynamic_key) DO NOTHING]
+[parameters: {'flow_run_id': 'e4e5bb69-fe33-4c9e-900a-8994b5189f81', 'task_key': 'thread_followup_flow-12ce363c', 'dynamic_key': '2', 'cache_key': None, 'cache_expiration': None, 'task_version': 'ed767d09187b28e7c138f7e85e56dacc', 'flow_run_run_count': 0, 'empirical_policy': '{"max_retries": 0, "retry_delay_seconds": 0.0, "retries": 0, "retry_delay": 0, "retry_jitter_factor": null}', 'task_inputs': '{"reminder_id": []}', 'tags': '[]', 'labels': '{"prefect.worker.name": "ProcessWorker 853e55ce-760a-4c45-884f-563721ceeb78", "prefect.worker.type": "process", "prefect.work-pool.name": "default", "prefect.work-pool.id": "73ed2ea4-6f56-412f-aeff-25f40f11c18b", "prefect.flow-run.id": "e4e5bb69-fe33-4c9e-900a-8994b5189f81"}', 'name': 'Send Follow-up Reminder-2', 'run_count': 0, 'total_run_time': '1970-01-01 00:00:00.000000', 'id': '42f1f5f6-20d2-466e-9176-e8e15d93d88f', 'created': '2025-04-03 00:40:07.212111', 'updated': '2025-04-03 00:40:07.228093'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)

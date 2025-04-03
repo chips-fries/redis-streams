@@ -1,0 +1,23 @@
+# src/config/destinations.yaml
+# Maps user-friendly aliases to platform-specific destination IDs and user IDs
+
+slack:
+  # Channels based on ENV
+  test_channel: C08HWHYSM6W
+  uat_channel: C08HZSW5T8U
+  prod_channel: C08HU6SLYKF
+  # Note: No Slack DM alias defined here for now
+
+line:
+  # Destination alias for sending Direct Message (DM) to bacon
+  bacon_dm: Uccaf1be8b6335a9827558bfbec6769f1 # Your Line User ID
+  # Removed 'channel: 2007161069' as it's invalid destination
+
+# User Aliases to User IDs (for mentions)
+users:
+  slack:
+    bacon: U08J619BW3B # Your Slack User ID
+    # alice: U_ALICE_SLACK_ID
+  line:
+    bacon: Uccaf1be8b6335a9827558bfbec6769f1 # Your Line User ID (Key is 'bacon')
+    # bob: U_BOB_LINE_ID

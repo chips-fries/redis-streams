@@ -1,3 +1,32 @@
+# config/consumer_config.yaml (Option 2: Using 'queues')
+
 consumer:
-  action:
-    pending_notification_reminder_timeout: 600
+
+  queues: # Renamed from 'streams' to 'queues'
+
+    # --- Definitions per Queue ---
+    slack_message_send_queue: # Use Queue name as the key
+      # Define worker(s) listening to this queue
+      workers: # Renamed from 'groups' to 'workers' for clarity
+        sender_1: # Worker instance name within this queue
+          type: SlackMessageSender
+          brpop_timeout: 5
+          settings:
+            max_send_retries: 3
+        # sender_2: # Another worker instance for the same queue
+        #   type: SlackMessageSender
+        #   settings: {}
+
+    slack_message_update_queue:
+      workers:
+        updater_1:
+           type: SlackMessageUpdater
+           brpop_timeout: 5
+           settings: {}
+
+    line_push_message_queue:
+      workers:
+        pusher_1:
+          type: LinePushMessageSender
+          brpop_timeout: 5
+          settings: {}

@@ -14,8 +14,14 @@ dependencies = [
     "fastapi (>=0.115.11,<0.116.0)",
     "uvicorn (>=0.34.0,<0.35.0)",
     "requests (>=2.32.3,<3.0.0)",
+    "prefect (>=3.2.14,<4.0.0)",
+    "slack-sdk (>=3.35.0,<4.0.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "line-bot-sdk (>=3.16.3,<4.0.0)",
+    "jinja2 (>=3.1.6,<4.0.0)",
+    "flask (>=3.1.0,<4.0.0)",
 ]
-
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -27,3 +33,4 @@ flake8 = "^7.1.2"
 pre-commit = "^4.2.0"
 commitizen = "^4.4.1"
 types-pyyaml = "^6.0.12.20241230"
+pytest = "^8.3.5"
