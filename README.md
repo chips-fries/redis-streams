@@ -277,3 +277,5 @@ sequenceDiagram
     Slack->>API: POST /slack/actions
     API->>Redis: ZREM + HSET status=resolved
 ```
+
+[Draw.io](https://drive.google.com/file/d/1JNW7Xvz81rd5-P2lIYAYm5nKHTKT_VCa/view?usp=sharing)
